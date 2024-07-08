@@ -1,10 +1,27 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Artwork Gallery</title>
     <style>
+        table {
+            border-collapse: collapse;
+            width: 100%;
+        }
+
+        th,
+        td {
+            border: 1px solid black;
+            padding: 8px;
+            text-align: left;
+        }
+
+        th {
+            background-color: #000000;
+        }
+
         body {
             background-color: #1e1e1e;
             color: #fff;
@@ -12,6 +29,7 @@
             margin: 0;
             padding: 0;
         }
+
         .navbar {
             display: flex;
             justify-content: space-between;
@@ -19,33 +37,40 @@
             padding: 1rem;
             background-color: #1d1d1f;
         }
+
         .navbar .left-section {
             display: flex;
             align-items: center;
             gap: 1rem;
         }
+
         .navbar .logo {
             font-size: 1.5rem;
         }
+
         .navbar .search-bar {
             display: flex;
             align-items: center;
             gap: 0.5rem;
         }
+
         .navbar .search-bar input {
             padding: 0.5rem;
             border: none;
             border-radius: 5px;
         }
+
         .navbar .menu {
             display: flex;
             align-items: center;
             gap: 1rem;
         }
+
         .navbar .menu a {
             color: #fff;
             text-decoration: none;
         }
+
         .gallery {
             display: flex;
             justify-content: center;
@@ -53,6 +78,7 @@
             flex-wrap: wrap;
             padding: 1rem;
         }
+
         .gallery .item {
             background-color: #1d1d1f;
             border-radius: 10px;
@@ -60,16 +86,20 @@
             width: 200px;
             text-align: center;
         }
+
         .gallery .item img {
             width: 100%;
             border-radius: 10px;
         }
+
         .gallery .item h3 {
             margin: 0.5rem 0;
         }
+
         .gallery .item p {
             color: #bbb;
         }
+
         .gallery .item button {
             padding: 0.5rem 1rem;
             border: none;
@@ -78,9 +108,11 @@
             color: #000000;
             cursor: pointer;
         }
+
         .gallery .item button:hover {
             background-color: #777;
         }
+
         .login-button {
             cursor: pointer;
             padding: 0.5rem 1rem;
@@ -90,9 +122,11 @@
             color: #fff;
             cursor: pointer;
         }
+
         .login-button:hover {
             background-color: #777;
         }
+
         .modal {
             display: none;
             position: fixed;
@@ -104,6 +138,7 @@
             overflow: auto;
             background-color: rgba(0, 0, 0, 0.5);
         }
+
         .modal-content {
             background-color: #1d1d1f;
             margin: 15% auto;
@@ -114,9 +149,11 @@
             border-radius: 10px;
             text-align: center;
         }
+
         .modal-content h2 {
             margin-bottom: 20px;
         }
+
         .modal-content .wallet-option {
             margin: 10px 0;
             padding: 10px;
@@ -125,15 +162,18 @@
             border-radius: 5px;
             cursor: pointer;
         }
+
         .modal-content .wallet-option:hover {
             background-color: #555;
         }
+
         .close {
             color: #aaa;
             float: right;
             font-size: 28px;
             font-weight: bold;
         }
+
         .close:hover,
         .close:focus {
             color: #fff;
@@ -142,6 +182,7 @@
         }
     </style>
 </head>
+
 <body>
     <header class="navbar">
         <div class="left-section">
@@ -185,6 +226,53 @@
         </div>
     </section>
 
+    <h1>Top 10 Cryptocurrencies</h1>
+    <table id="cryptoTable">
+        <tr>
+            <th>Rank</th>
+            <th>Name</th>
+            <th>Symbol</th>
+            <th>Price (USD)</th>
+            <th>Market Cap (USD)</th>
+        </tr>
+    </table>
+
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+    <script>
+        const apiKey = '0c5bd279-5f70-471d-84ae-5528a1f65ccf'; // 替換為您的API密鑰
+        const url = 'https://pro-api.coinmarketcap.com/v1/cryptocurrency/listings/latest';
+
+        axios.get(url, {
+            headers: {
+                'X-CMC_PRO_API_KEY': apiKey
+            },
+            params: {
+                'start': '1',
+                'limit': '10',
+                'convert': 'USD'
+            }
+        })
+            .then(response => {
+                const cryptos = response.data.data;
+                const table = document.getElementById('cryptoTable');
+
+                cryptos.forEach(crypto => {
+                    const row = table.insertRow();
+                    row.insertCell(0).textContent = crypto.cmc_rank;
+                    row.insertCell(1).textContent = crypto.name;
+                    row.insertCell(2).textContent = crypto.symbol;
+                    row.insertCell(3).textContent = '$' + crypto.quote.USD.price.toFixed(2);
+                    row.insertCell(4).textContent = '$' + crypto.quote.USD.market_cap.toFixed(0);
+                });
+            })
+            .catch(error => {
+                console.error('Error:', error);
+                document.body.innerHTML += '<p>Error fetching data. Please try again later.</p>';
+            });
+    </script>
+
+
+
     <div id="loginModal" class="modal">
         <div class="modal-content">
             <span class="close" onclick="closeModal()">&times;</span>
@@ -205,11 +293,12 @@
             document.getElementById('loginModal').style.display = "none";
         }
 
-        window.onclick = function(event) {
+        window.onclick = function (event) {
             if (event.target == document.getElementById('loginModal')) {
                 closeModal();
             }
         }
     </script>
 </body>
+
 </html>
