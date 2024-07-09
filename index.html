@@ -239,39 +239,37 @@
 
     <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
     <script>
-        const apiKey = '0c5bd279-5f70-471d-84ae-5528a1f65ccf'; // API key
-        const url = 'https://pro-api.coinmarketcap.com/v1/cryptocurrency/listings/latest';
+const proxyUrl = 'https://cors-anywhere.herokuapp.com/';
+const apiUrl = 'https://pro-api.coinmarketcap.com/v1/cryptocurrency/listings/latest';
 
-        axios.get(url, {
-            headers: {
-                'X-CMC_PRO_API_KEY': apiKey
-            },
-            params: {
-                'start': '1',
-                'limit': '10',
-                'convert': 'USD'
-            }
-        })
-            .then(response => {
-                const cryptos = response.data.data;
-                const table = document.getElementById('cryptoTable');
+axios.get(proxyUrl + apiUrl, {
+    headers: {
+        'X-CMC_PRO_API_KEY': '0c5bd279-5f70-471d-84ae-5528a1f65ccf'
+    },
+    params: {
+        'start': '1',
+        'limit': '10',
+        'convert': 'USD'
+    }
+})
+.then(response => {
+    const cryptos = response.data.data;
+    const table = document.getElementById('cryptoTable');
 
-                cryptos.forEach(crypto => {
-                    const row = table.insertRow();
-                    row.insertCell(0).textContent = crypto.cmc_rank;
-                    row.insertCell(1).textContent = crypto.name;
-                    row.insertCell(2).textContent = crypto.symbol;
-                    row.insertCell(3).textContent = '$' + crypto.quote.USD.price.toFixed(2);
-                    row.insertCell(4).textContent = '$' + crypto.quote.USD.market_cap.toFixed(0);
-                });
-            })
-            .catch(error => {
-                console.error('Error:', error);
-                document.body.innerHTML += '<p>Error fetching data. Please try again later.</p>';
-            });
+    cryptos.forEach(crypto => {
+        const row = table.insertRow();
+        row.insertCell(0).textContent = crypto.cmc_rank;
+        row.insertCell(1).textContent = crypto.name;
+        row.insertCell(2).textContent = crypto.symbol;
+        row.insertCell(3).textContent = '$' + crypto.quote.USD.price.toFixed(2);
+        row.insertCell(4).textContent = '$' + crypto.quote.USD.market_cap.toFixed(0);
+    });
+})
+.catch(error => {
+    console.error('Error:', error);
+    document.body.innerHTML += '<p>Error fetching data. Please try again later.</p>';
+});
     </script>
-
-
 
     <div id="loginModal" class="modal">
         <div class="modal-content">
