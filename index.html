@@ -242,27 +242,26 @@
 const proxyUrl = 'https://cors-anywhere.herokuapp.com/';
 const apiUrl = 'https://pro-api.coinmarketcap.com/v1/cryptocurrency/listings/latest';
 
-axios.get(proxyUrl + apiUrl, {
-    headers: {
-        'X-CMC_PRO_API_KEY': '0c5bd279-5f70-471d-84ae-5528a1f65ccf'
-    },
+axios.get('https://api.coingecko.com/api/v3/coins/markets', {
     params: {
-        'start': '1',
-        'limit': '10',
-        'convert': 'USD'
+        vs_currency: 'usd',
+        order: 'market_cap_desc',
+        per_page: 10,
+        page: 1,
+        sparkline: false
     }
 })
 .then(response => {
-    const cryptos = response.data.data;
+    const cryptos = response.data;
     const table = document.getElementById('cryptoTable');
 
     cryptos.forEach(crypto => {
         const row = table.insertRow();
-        row.insertCell(0).textContent = crypto.cmc_rank;
+        row.insertCell(0).textContent = crypto.market_cap_rank;
         row.insertCell(1).textContent = crypto.name;
-        row.insertCell(2).textContent = crypto.symbol;
-        row.insertCell(3).textContent = '$' + crypto.quote.USD.price.toFixed(2);
-        row.insertCell(4).textContent = '$' + crypto.quote.USD.market_cap.toFixed(0);
+        row.insertCell(2).textContent = crypto.symbol.toUpperCase();
+        row.insertCell(3).textContent = '$' + crypto.current_price.toFixed(2);
+        row.insertCell(4).textContent = '$' + crypto.market_cap.toFixed(0);
     });
 })
 .catch(error => {
