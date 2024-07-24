@@ -180,6 +180,15 @@
             text-decoration: none;
         }
 
+        .button-link {
+    color: white; /* 设置文字颜色为白色 */
+    text-decoration: none; /* 移除下划线 */
+}
+
+.button-link:hover {
+    text-decoration: none; /* 移除下划线（在悬停时也有效） */
+}
+
         /* Media query for mobile */
         @media screen and (max-width: 768px) {
             .navbar .menu {
@@ -354,7 +363,7 @@
 <body>
     <header class="navbar">
         <div class="left-section">
-            <img src="logo.svg" width="40px" height=auto>
+            <a href="index.html">  <img src="logo.svg" width="40px" height=auto></a>
             <div class="logo">WEBSITE</div>
             <div class="search-bar">
                 <input type="text" placeholder="Search">
@@ -364,7 +373,7 @@
             <img src="menu-icon.svg" alt="Menu" width="30px">
         </div>
         <nav class="menu">
-            <a href="#">Browse</a>
+            <a href="browse.htm">Browse</a>
             <a href="sell.htm">Sell</a>
             <a href="index.html">Home</a>
             <a href="profile.htm"><img src="login.png" alt="login" width="40px"></a>
@@ -382,7 +391,7 @@
                 <p>Bio</p>
                 <p>Joined: Jan 2024</p>
                 <div class="profile-actions">
-                    <button>My Transactions</button>
+                    <button><a href="transactions.htm" class="button-link">Transactions</a> </button>
                     <button>My Wallet</button>
                     <button>Edit Profile</button>
                 </div>

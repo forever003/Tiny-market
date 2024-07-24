@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>WEBSITE</title>
+    <title>My Transactions - WEBSITE</title>
     <style>
         table {
             border-collapse: collapse;
@@ -258,6 +258,67 @@
             background-color: #2a2a2a;
             color: #fff;
         }
+
+        .content {
+            max-width: 1200px;
+            margin: 2rem auto;
+            padding: 0 1rem;
+        }
+
+        h1, h2 {
+            margin-bottom: 1rem;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-bottom: 2rem;
+        }
+
+        th, td {
+            padding: 0.5rem;
+            text-align: left;
+            border-bottom: 1px solid #333;
+        }
+
+        th {
+            background-color: #2a2a2a;
+        }
+
+        .nft-image {
+            width: 40px;
+            height: 40px;
+            border-radius: 5px;
+            object-fit: cover;
+        }
+
+        .sell-button {
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            padding: 0.5rem 1rem;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        @media screen and (max-width: 768px) {
+            .navbar .menu {
+                display: none;
+            }
+
+            .navbar .menu-toggle {
+                display: block;
+            }
+
+            table {
+                font-size: 0.8rem;
+            }
+
+            .nft-image {
+                width: 30px;
+                height: 30px;
+            }
+        }
     </style>
 </head>
 
@@ -276,54 +337,81 @@
         <nav class="menu">
             <a href="browse.htm">Browse</a>
             <a href="sell.htm">Sell</a>
-            <a href="index.html" class="active1">Home</a>
+            <a href="index.html">Home</a>
             <a href="profile.htm"><img src="login.png" alt="login" width="40px"></a>
             <button class="login-button" onclick="openModal()">Login</button>
         </nav>
     </header>
-    <section class="gallery">
-        <div class="item">
-            <img src="1.png" alt="My Mind">
-            <h3>My Mind</h3>
-            <p>Artist and Blurb</p>
-            <button>View</button>
-        </div>
-        <div class="item">
-            <img src="2.png" alt="Olah">
-            <h3>Olah</h3>
-            <p>Artist and Blurb</p>
-            <button>View</button>
-        </div>
-        <div class="item">
-            <img src="3.png" alt="Gravity">
-            <h3>Gravity</h3>
-            <p>Artist and Blurb</p>
-            <button>View</button>
-        </div>
-        <div class="item">
-            <img src="4.png" alt="Future">
-            <h3>Future</h3>
-            <p>Artist and Blurb</p>
-            <button>View</button>
-        </div>
-    </section>
 
-    <h2>Top 10 Cryptocurrencies</h2>
-    <table id="cryptoTable">
-        <tr>
-            <th>Rank</th>
-            <th>Name</th>
-            <th>Symbol</th>
-            <th>Price (USD)</th>
-            <th>Market Cap (USD)</th>
-        </tr>
-    </table>
+    <main class="content">
+        <h1>My Transactions</h1>
 
-    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+        <h2>Active</h2>
+        <table>
+            <thead>
+                <tr>
+                    <th>Name</th>
+                    <th>Price</th>
+                    <th>Payment Method</th>
+                    <th>Status</th>
+                    <th>Date</th>
+                    <th>Action</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td><img src="nft1.jpg" alt="NFT 1" class="nft-image"> NFT 1</td>
+                    <td>0.5 BTC</td>
+                    <td>Bitcoin</td>
+                    <td>Pending</td>
+                    <td>2024-07-24</td>
+                    <td><button class="sell-button">Sell</button></td>
+                </tr>
+                <tr>
+                    <td><img src="nft2.jpg" alt="NFT 2" class="nft-image"> NFT 2</td>
+                    <td>0.3 BTC</td>
+                    <td>Bitcoin</td>
+                    <td>Pending</td>
+                    <td>2024-07-23</td>
+                    <td><button class="sell-button">Sell</button></td>
+                </tr>
+                <tr>
+                    <td><img src="nft3.jpg" alt="NFT 3" class="nft-image"> NFT 3</td>
+                    <td>0.2 BTC</td>
+                    <td>Bitcoin</td>
+                    <td>Pending</td>
+                    <td>2024-07-22</td>
+                    <td><button class="sell-button">Sell</button></td>
+                </tr>
+            </tbody>
+        </table>
+
+        <h2>History</h2>
+        <table>
+            <thead>
+                <tr>
+                    <th>Name</th>
+                    <th>Price</th>
+                    <th>Payment Method</th>
+                    <th>Status</th>
+                    <th>Date</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td><img src="nft4.jpg" alt="NFT 4" class="nft-image"> NFT 4</td>
+                    <td>0.4 BTC</td>
+                    <td>Bitcoin</td>
+                    <td>Completed</td>
+                    <td>2024-07-20</td>
+                </tr>
+
+            </tbody>
+        </table>
+    </main>
+
     <script>
-        const apiUrl = 'https://api.coingecko.com/api/v3/coins/markets';
-
-        axios.get(apiUrl, {
+              axios.get(apiUrl, {
                 params: {
                     vs_currency: 'usd',
                     order: 'market_cap_desc',
@@ -384,6 +472,7 @@
             <div class="wallet-option">Unisat Wallet</div>
         </div>
     </div>
+    </script>
 </body>
 
 </html>
