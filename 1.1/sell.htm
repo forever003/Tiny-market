@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sell or Swap NFT</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <header class="navbar">
+        <div class="left-section">
+            <a href="index.html">  <img src="logo.svg" width="40px" height=auto></a>
+            <div class="logo">WEBSITE</div>
+            <div class="search-bar">
+                <input type="text" placeholder="Search">
+            </div>
+        </div>
+        <div class="menu-toggle">
+            <img src="menu-icon.svg" alt="Menu" width="30px">
+        </div>
+        <nav class="menu">
+            <a href="browse.htm">Browse</a>
+            <a href="sell.htm" class="active1">Sell</a>
+            <a href="index.html">Home</a>
+            <a href="profile.htm"><img src="login.png" alt="login" width="40px"></a>
+            <button class="login-button" onclick="openModal()">Login</button>
+        </nav>
+    </header>
+
+    <div class="container">
+        <h1>Sell or Swap</h1>
+        <div class="nft-details">
+            <div class="nft-image">
+                <img src="stacks.png" alt="NFT Image" id="nftImage">
+            </div>
+            <div class="nft-form">
+                <h2 id="nftName">NFT Name</h2>
+                <form id="sellForm">
+                    <div class="form-group">
+                        <label for="sellMethod">Sell Method</label>
+                        <select id="sellMethod" name="sellMethod">
+                            <option value="sell">Sell</option>
+                            <option value="swap">Swap</option>
+                        </select>
+                    </div>
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="sellPrice">Sell Price</label>
+                            <input type="text" id="sellPrice" name="sellPrice" placeholder="0.00 BTC">
+                        </div>
+                        <div class="form-group">
+                            <label for="swapNFT">Swap</label>
+                            <button type="button" id="swapNFT" disabled>Choose NFT</button>
+                        </div>
+                    </div>
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="expiryDate">Expiry Date</label>
+                            <input type="date" id="expiryDate" name="expiryDate">
+                        </div>
+                        <div class="form-group">
+                            <label for="expiryTime">Time</label>
+                            <input type="time" id="expiryTime" name="expiryTime">
+                        </div>
+                    </div>
+                    <button type="submit">Continue</button>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const sellMethod = document.getElementById('sellMethod');
+            const sellPrice = document.getElementById('sellPrice');
+            const swapNFT = document.getElementById('swapNFT');
+            const sellForm = document.getElementById('sellForm');
+
+            sellMethod.addEventListener('change', function() {
+                if (this.value === 'swap') {
+                    sellPrice.disabled = true;
+                    swapNFT.disabled = false;
+                } else {
+                    sellPrice.disabled = false;
+                    swapNFT.disabled = true;
+                }
+            });
+
+            sellForm.addEventListener('submit', function(e) {
+                e.preventDefault();
+                const formData = new FormData(this);
+                const data = Object.fromEntries(formData);
+                console.log('Form submitted with data:', data);
+                // Here you would typically send this data to your server
+                alert('Form submitted successfully!');
+            });
+
+            // Function to update NFT details (simulated)
+            function updateNFTDetails(name, imageUrl) {
+                document.getElementById('nftName').textContent = name;
+                document.getElementById('nftImage').src = imageUrl;
+            }
+
+            // Simulate loading NFT details (replace with actual data fetching logic)
+            updateNFTDetails('Future', 'future.jpg');
+        });
+
+        function openModal() {
+            // Implement login modal functionality here
+            alert('Login functionality to be implemented');
+        }
+
+        function openModal() {
+            document.getElementById('loginModal').style.display = "block";
+        }
+
+        function closeModal() {
+            document.getElementById('loginModal').style.display = "none";
+        }
+
+        document.addEventListener('DOMContentLoaded', function () {
+            const menuToggle = document.querySelector('.menu-toggle');
+            const menu = document.querySelector('.navbar .menu');
+
+            menuToggle.addEventListener('click', function () {
+                menu.classList.toggle('active');
+            });
+
+            window.addEventListener('click', function (event) {
+                if (!event.target.closest('.navbar') && menu.classList.contains('active')) {
+                    menu.classList.remove('active');
+                }
+            });
+        });
+    </script>
+
+    <div id="loginModal" class="modal">
+        <div class="modal-content">
+            <span class="close" onclick="closeModal()">&times;</span>
+            <h2>Connect a Wallet</h2>
+            <p>Install one of the wallets below to begin purchasing.</p>
+            <div class="wallet-option">Leather (formerly Hiro wallet)</div>
+            <div class="wallet-option">Xverse Wallet</div>
+            <div class="wallet-option">Unisat Wallet</div>
+        </div>
+    </div>
+    
+</body>
+</html>

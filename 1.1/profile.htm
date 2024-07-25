@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Profile - WEBSITE</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+
+<body>
+    <header class="navbar">
+        <div class="left-section">
+            <a href="index.html">  <img src="logo.svg" width="40px" height=auto></a>
+            <div class="logo">WEBSITE</div>
+            <div class="search-bar">
+                <input type="text" placeholder="Search">
+            </div>
+        </div>
+        <div class="menu-toggle">
+            <img src="menu-icon.svg" alt="Menu" width="30px">
+        </div>
+        <nav class="menu">
+            <a href="browse.htm">Browse</a>
+            <a href="sell.htm">Sell</a>
+            <a href="index.html">Home</a>
+            <a href="profile.htm"><img src="login.png" alt="login" width="40px"></a>
+            <button class="login-button" onclick="openModal()">Login</button>
+        </nav>
+    </header>
+
+    <main class="profile-container">
+        <div class="profile-header">
+            <div class="profile-image">
+                <img src="profile-image.jpg" alt="Yuwei Hsu">
+            </div>
+            <div class="profile-info">
+                <h1>Yuwei Hsu</h1>
+                <p>Bio</p>
+                <p>Joined: Jan 2024</p>
+                <div class="profile-actions">
+                    <button><a href="transactions.htm" class="button-link">Transactions</a> </button>
+                    <button>My Wallet</button>
+                    <button>Edit Profile</button>
+                </div>
+            </div>
+        </div>
+
+        <h2>Your NFT's</h2>
+        <div class="nft-gallery">
+            <div class="nft-item">
+                <img src="nft1.jpg" alt="NFT1">
+                <h3>NFT1</h3>
+            </div>
+            <div class="nft-item">
+                <img src="nft2.jpg" alt="NFT2">
+                <h3>NFT2</h3>
+            </div>
+            <div class="nft-item">
+                <img src="nft3.jpg" alt="NFT3">
+                <h3>NFT3</h3>
+            </div>
+            <div class="nft-item">
+                <img src="nft4.jpg" alt="NFT4">
+                <h3>NFT4</h3>
+            </div>
+        </div>
+    </main>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            const menuToggle = document.querySelector('.menu-toggle');
+            const menu = document.querySelector('.navbar .menu');
+
+            menuToggle.addEventListener('click', function () {
+                menu.classList.toggle('active');
+            });
+
+            window.addEventListener('click', function (event) {
+                if (!event.target.closest('.navbar') && menu.classList.contains('active')) {
+                    menu.classList.remove('active');
+                }
+            });
+        });
+
+        
+        function openModal() {
+            document.getElementById('loginModal').style.display = "block";
+        }
+
+        function closeModal() {
+            document.getElementById('loginModal').style.display = "none";
+        }
+
+        document.addEventListener('DOMContentLoaded', function () {
+            const menuToggle = document.querySelector('.menu-toggle');
+            const menu = document.querySelector('.navbar .menu');
+
+            menuToggle.addEventListener('click', function () {
+                menu.classList.toggle('active');
+            });
+
+            window.addEventListener('click', function (event) {
+                if (!event.target.closest('.navbar') && menu.classList.contains('active')) {
+                    menu.classList.remove('active');
+                }
+            });
+        });
+    </script>
+
+    <div id="loginModal" class="modal">
+        <div class="modal-content">
+            <span class="close" onclick="closeModal()">&times;</span>
+            <h2>Connect a Wallet</h2>
+            <p>Install one of the wallets below to begin purchasing.</p>
+            <div class="wallet-option">Leather (formerly Hiro wallet)</div>
+            <div class="wallet-option">Xverse Wallet</div>
+            <div class="wallet-option">Unisat Wallet</div>
+        </div>
+    </div>
+</body>
+
+</html>

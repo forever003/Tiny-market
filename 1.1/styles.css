@@ -1,0 +1,575 @@
+table {
+    border-collapse: collapse;
+    width: 100%;
+}
+
+th,
+td {
+    border: 1px solid black;
+    padding: 8px;
+    text-align: left;
+}
+
+th {
+    background-color: #000000;
+}
+
+body {
+    background-color: #1e1e1e;
+    color: #fff;
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+}
+
+.navbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1rem;
+    background-color: #1d1d1f;
+}
+
+.navbar .left-section {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+}
+
+.navbar .logo {
+    font-size: 1.5rem;
+}
+
+.navbar .search-bar {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+
+
+.navbar .menu {
+    display: flex;
+    align-items: center;
+    gap: 3rem;
+}
+
+.navbar .menu a {
+    color: #fff;
+    text-decoration: none;
+}
+
+.navbar .menu .active1 {
+    background-color: #fff;
+    color: #000;
+    padding: 0.5rem 1rem;
+    border-radius: 20px;
+}
+
+.gallery {
+    display: flex;
+    justify-content: center;
+    gap: 1rem;
+    flex-wrap: wrap;
+    padding: 1rem;
+}
+
+.gallery .item {
+    background-color: #1d1d1f;
+    border-radius: 10px;
+    padding: 1rem;
+    width: 200px;
+    text-align: center;
+}
+
+.gallery .item img {
+    width: 100%;
+    border-radius: 10px;
+}
+
+.gallery .item h3 {
+    margin: 0.5rem 0;
+}
+
+.gallery .item p {
+    color: #bbb;
+}
+
+.gallery .item button {
+    padding: 0.5rem 1rem;
+    border: none;
+    border-radius: 5px;
+    background-color: #cacacc;
+    color: #000000;
+    cursor: pointer;
+}
+
+.gallery .item button:hover {
+    background-color: #777;
+}
+
+.login-button {
+    cursor: pointer;
+    padding: 0.5rem 1rem;
+    border: none;
+    border-radius: 5px;
+    background-color: #888;
+    color: #fff;
+}
+
+.login-button:hover {
+    background-color: #777;
+}
+
+.modal {
+    display: none;
+    position: fixed;
+    z-index: 1;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    overflow: auto;
+    background-color: rgba(0, 0, 0, 0.5);
+}
+
+.modal-content {
+    background-color: #1d1d1f;
+    margin: 15% auto;
+    padding: 20px;
+    border: 1px solid #888;
+    width: 80%;
+    max-width: 400px;
+    border-radius: 10px;
+    text-align: center;
+}
+
+.modal-content h2 {
+    margin-bottom: 20px;
+}
+
+.modal-content .wallet-option {
+    margin: 10px 0;
+    padding: 10px;
+    background-color: #1d1d1f;
+    border: 1px solid #555;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.modal-content .wallet-option:hover {
+    background-color: #555;
+}
+
+.close {
+    color: #aaa;
+    float: right;
+    font-size: 28px;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+.close:hover,
+.close:focus {
+    color: #fff;
+    text-decoration: none;
+}
+
+
+
+/* Hide menu toggle on larger screens */
+@media screen and (min-width: 769px) {
+    .navbar .menu-toggle {
+        display: none;
+    }
+
+    .navbar .menu {
+        display: flex !important;
+    }
+}
+
+input,
+select,
+button {
+    width: 100%;
+    padding: 10px;
+    border-radius: 5px;
+    border: none;
+    background-color: #2a2a2a;
+    color: #fff;
+}
+
+
+/* Media query for mobile */
+@media screen and (max-width: 768px) {
+    .navbar .menu {
+        display: none;
+        flex-direction: column;
+        position: absolute;
+        top: 4rem;
+        right: 1rem;
+        background-color: #1d1d1f;
+        border-radius: 5px;
+        padding: 1rem;
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+    }
+
+    .navbar .menu.active {
+        display: flex;
+    }
+
+    .navbar .menu a {
+        color: #fff;
+        text-decoration: none;
+        padding: 0.5rem 1rem;
+        display: block;
+    }
+
+    .navbar .menu a:hover {
+        background-color: #333;
+        border-radius: 5px;
+    }
+
+    .navbar .left-section {
+        display: block;
+        width: 100%;
+        text-align: center;
+        margin-bottom: 1rem;
+    }
+
+    .navbar .search-bar {
+        width: 100%;
+        text-align: center;
+    }
+
+    .navbar .search-bar input {
+        width: 80%;
+        margin: 0 auto;
+    }
+
+    .navbar .menu-toggle {
+        display: block;
+    }
+}
+
+/* Hide menu toggle on larger screens */
+@media screen and (min-width: 769px) {
+    .navbar .menu-toggle {
+        display: none;
+    }
+
+    .navbar .menu {
+        display: flex !important;
+    }
+}
+
+.container {
+    max-width: 1200px;
+    margin: 2rem auto;
+    padding: 0 1rem;
+}
+
+h1 {
+    font-size: 24px;
+    margin-bottom: 20px;
+}
+
+.nft-details {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 2rem;
+}
+
+.nft-image {
+    width: 100%;
+    aspect-ratio: 1;
+    background-color: #2a2a2a;
+    border-radius: 10px;
+    overflow: hidden;
+}
+
+.nft-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.nft-form {
+    display: flex;
+    flex-direction: column;
+}
+
+.form-group {
+    margin-bottom: 15px;
+}
+
+label {
+    display: block;
+    margin-bottom: 5px;
+    font-weight: bold;
+}
+
+input,
+select,
+button {
+    width: 100%;
+    padding: 10px;
+    border-radius: 5px;
+    border: none;
+    background-color: #2a2a2a;
+    color: #fff;
+}
+
+.form-row {
+    display: flex;
+    gap: 2rem;
+}
+
+.form-row .form-group {
+    flex: 1;
+}
+
+button {
+    background-color: #888;
+    cursor: pointer;
+    font-weight: bold;
+}
+
+button:hover {
+    background-color: #888;
+}
+
+.navbar .search-bar input {
+    padding: 0.5rem;
+    border: none;
+    border-radius: 5px;
+}
+
+.login-button {
+    cursor: pointer;
+    padding: 0.5rem 1rem;
+    border: none;
+    border-radius: 5px;
+    background-color: #888;
+    color: #fff;
+}
+
+
+
+.button-link {
+    color: white;
+    text-decoration: none;
+
+}
+
+.button-link:hover {
+    text-decoration: none;
+}
+
+
+
+/* Profile specific styles */
+.profile-container {
+    max-width: 1200px;
+    margin: 2rem auto;
+    padding: 0 1rem;
+}
+
+.profile-header {
+    display: flex;
+    align-items: center;
+    gap: 2rem;
+    margin-bottom: 2rem;
+}
+
+.profile-image {
+    width: 150px;
+    height: 150px;
+    border-radius: 50%;
+    overflow: hidden;
+}
+
+.profile-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.profile-info h1 {
+    margin: 0;
+}
+
+.profile-actions {
+    display: flex;
+    gap: 1rem;
+    margin-top: 1rem;
+}
+
+.profile-actions button {
+    padding: 0.5rem 1rem;
+    border: none;
+    border-radius: 5px;
+    background-color: #2a2a2a;
+    color: #fff;
+    cursor: pointer;
+}
+
+.nft-gallery {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+    gap: 1rem;
+}
+
+.nft-item {
+    background-color: #1d1d1f;
+    border-radius: 10px;
+    overflow: hidden;
+}
+
+    .profile-header {
+        flex-direction: column;
+        text-align: center;
+    }
+
+    .nft-gallery {
+        grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+    }
+
+.browse-container {
+    max-width: 1200px;
+    margin: 2rem auto;
+    padding: 0 1rem;
+}
+
+.nft-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    gap: 2rem;
+}
+
+.nft-item {
+    background-color: #2a2a2a;
+    border-radius: 10px;
+    overflow: hidden;
+    padding: 1rem;
+}
+
+.nft-item img {
+    width: 100%;
+    border-radius: 10px;
+    margin-bottom: 1rem;
+}
+
+.nft-item h2 {
+    margin: 0 0 0.5rem 0;
+}
+
+.nft-item p {
+    margin: 0 0 1rem 0;
+    color: #bbb;
+}
+
+.nft-price {
+    font-size: 1.5rem;
+    font-weight: bold;
+    margin-bottom: 0.5rem;
+}
+
+.nft-price-usd {
+    color: #bbb;
+    font-size: 0.9rem;
+}
+
+.nft-floor-price {
+    color: #bbb;
+    font-size: 0.9rem;
+    margin-bottom: 1rem;
+}
+
+.nft-buttons {
+    display: flex;
+    gap: 1rem;
+}
+
+.nft-buttons button {
+    flex: 1;
+    padding: 0.5rem;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-weight: bold;
+}
+
+.buy-now {
+    background-color: #4CAF50;
+    color: white;
+}
+
+.swap {
+    background-color: #ddd;
+    color: #333;
+}
+
+
+.content {
+    max-width: 1200px;
+    margin: 2rem auto;
+    padding: 0 1rem;
+}
+
+h1,
+h2 {
+    margin-bottom: 1rem;
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-bottom: 2rem;
+}
+
+th,
+td {
+    padding: 0.5rem;
+    text-align: left;
+    border-bottom: 1px solid #333;
+}
+
+th {
+    background-color: #2a2a2a;
+}
+
+.nft-image {
+    width: 40px;
+    height: 40px;
+    border-radius: 5px;
+    object-fit: cover;
+}
+
+.sell-button {
+    background-color: #4CAF50;
+    color: white;
+    border: none;
+    padding: 0.5rem 1rem;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+@media screen and (max-width: 768px) {
+    .navbar .menu {
+        display: none;
+    }
+
+    .navbar .menu-toggle {
+        display: block;
+    }
+
+    table {
+        font-size: 0.8rem;
+    }
+
+    .nft-image {
+        width: 30px;
+        height: 30px;
+    }
+}
